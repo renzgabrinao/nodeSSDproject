@@ -1,13 +1,13 @@
 {
   "name": "project",
   "version": "1.0.0",
-  "description": "",
+  "description": "Project for NodeJS for SSD 2022 BCIT",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Renz Gabrinao",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.1",
