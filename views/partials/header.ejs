@@ -1,0 +1,10 @@
+<nav class="nav-bar">
+    <ul>
+      <a href="/secure/secure-area"><li>home</li></a>
+    </ul>
+    <ul>
+      <a href="/secure/secure-users"><li>profiles</li></a>
+      <a href="/secure/<%= reqInfo.username %>"><li><%= reqInfo.username %></li></a>
+      <a href='/user/logout'><li>logout</li></a>
+    </ul>
+</nav>

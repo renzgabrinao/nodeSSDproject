@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/styles.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Rubik:wght@300&display=swap" rel="stylesheet"> 
+    <title>Yearbook</title>
+</head>
+<body>
+    <main role="main" class="container">
+        <div class="starter-template">
+            <%- include('../partials/header.ejs')%>
+            <div class="sidebar">
+                <div class="sidebar-users"></div>
+                <div class="sidebar-body"><%- body %></div>
+                <ul class="sidebar-users">
+                    <span class="sidebar-title">other students:</span>
+                    <% for (let i = 0; i < usersList.length; i++) { %>
+                        <%console.log("SIDEBAR")%>
+                        <%console.log(usersList[i], currentUser )%>
+                        <% if (usersList[i].id != currentUser.id) { %>
+                            <li>
+                                <a href="/secure/<%= usersList[i].username %>">
+                                    <%= usersList[i].firstName%> <%= usersList[i].lastName%>
+                                </a>
+                            </li>
+                        <% } %>
+                    <% } %>
+                </ul>
+            </div>
+            <%- include('../partials/footer.ejs')%>
+        </div>
+    </main>
+    
+</body>
+</html>

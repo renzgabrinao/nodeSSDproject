@@ -1,0 +1,76 @@
+<div class="user-detail">
+    <% for(let i = 0; i < usersList.length; i++ ) {%>
+
+        <% if(usersList[i]._id.toString() == selectedUser._id.toString()) { %>
+
+            <section class="pic-interests-section">
+                <div class="profile-pic">
+                    <img src="<%= selectedUser.picturePath%>"/>
+                </div>
+                <div>
+                    <div class="name-button">
+                        <h2><%= selectedUser.firstName %> <%= selectedUser.lastName %></h2>
+        
+                        <% if(selectedUser._id.toString() == currentUser._id.toString() || currentUser.role == "manager" || currentUser.role == "admin") { %>
+                            <a href="/secure/edit/<%= usersList[i]._id.toString() %>"><button>Edit</button></a>
+                        <% } %>
+            
+                        <% if(currentUser.role === "admin" && currentUser._id.toString() !== selectedUser._id.toString()) { %>
+                            <a href="/secure/delete/<%= usersList[i]._id.toString() %>"><button>Delete</button></a>
+                        <% } %>
+                    </div>
+                    <div class="interests">
+                        <% if(selectedUser.interests[0] == "" && selectedUser.interests.length == 1) { %>
+                            <h3>No Interests</h3>
+                        <% } else { %>
+                            <h3>Interests</h3>
+                            <ul class="interest-list">
+                                <% for(let j = 0; j < selectedUser.interests.length; j++) { %>
+                                    <li><%= selectedUser.interests[j] %></li>
+                                <% } %>
+                            </ul>
+                        <% } %>
+                    </div>
+                </div>
+            </section>
+
+            <section class="comment-section">
+
+                <form action="/secure/comment<%= selectedUser._id.toString() ? "/"+selectedUser._id.toString() : "" %>" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" id="currentUserId" name="currentUserId" value="<%= currentUser._id.toString() %>">
+                    <input id="comment" name="comment" placeholder="Add a Comment!" type="text">
+                    <button type="submit" value="Submit">Submit</button>
+                </form>
+    
+                <% if(selectedUser.comments.length != 0) { %>
+    
+                    <ul class="comment-block">
+                        <% for(let j = 0; j < selectedUser.comments.length; j++) {%>
+                            <div class="comment">
+                                <li class="comment-author">
+                                    <span><a href="/secure/<%= selectedUser.comments[j].commentAuthor %>"><%= selectedUser.comments[j].commentAuthor %></a></span>
+                                    <a href="/secure/deleteComment/<%= selectedUser.comments[j]._id.toString() %>&<%= selectedUser._id.toString() %>">
+                                        <button>Delete</button>
+                                    </a>
+                                </li>
+                                <li class="comment-body">
+                                    <span><%= selectedUser.comments[j].commentBody %></span>
+                                </li>
+                            </div>
+                        <% } %>
+                    </ul>
+    
+                <% } %>
+            </section>
+        <% } %>
+    <% } %>
+</div>
+
+
+
+    
+
+
+
+
+

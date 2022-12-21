@@ -1,0 +1,53 @@
+<form class="edit-form" action="/secure/edit<%= userId ? "/"+userId : "" %>" method="POST" enctype="multipart/form-data">
+    <input type="hidden" id="userId" name="userId" value="<%= user.userId %>">
+    <input id="profilePicturePath" name="profilePicturePath" type="hidden" value="<%= user.picturePath %>">
+    <table class="register-table">
+        <tbody class="register-body">
+            <tr>
+                <h3 class="edit-title">
+                    <%= userId ? "Edit" : "New" %> Profile
+                </h3>
+            </tr>
+            <tr class="edit-profile-pic">
+                <td><img src="<%= user.picturePath %>"></td>
+            </tr>
+            <tr class="firstname-input">
+                <td><label for="firstName">First Name:</label></td>
+                <td><input id="firstName" name="firstName" type="text" value="<%= user.firstName ? user.firstName : '' %>">
+                </td>
+            </tr>
+            <tr class="lastname-input">
+                <td><label for="lastName">Last Name:</label></td>
+                <td><input id="lastName" name="lastName" type="text" value="<%= user.lastName ? user.lastName : '' %>">
+                </td>
+            </tr>
+            <tr class="interest-input">
+                <td><label for="interests">Interests:</label>
+                </td>
+                <td><input id="interests" name="interests" type="text" value="<%= user.interests ? user.interests : '' %>" >
+                </td>
+            </tr>
+            <tr class="profilepic-input">
+                <td><label for="picture">Profile Image</label ></td>
+                <td><input type="file" name="picture" id="image" /></td>
+            </tr>
+            <% if (user.role == "manager" || user.role == "admin") { %>
+                <tr class="role-input">
+                    <td><label for="role"></label></td>
+                    <td>
+                        <select name="role" id="roles">
+                            <% if (user.role == "admin") { %>
+                                <option value="admin">Admin</option>
+                            <% } %>
+                            <option value="manager">Manager</option>
+                            <option value="student">Student</option>
+                        </select>
+                    </td>
+                </tr>
+            <% } %> 
+        </tbody>
+    </table>
+    <button type="submit" value="Submit">Submit</button>
+
+</form>
+<%= errorMessage %>

@@ -1,0 +1,34 @@
+
+<div class="title-header">
+  <h1>Students</h1>
+</div>
+
+
+
+<form class="search-bar" id="profile-search" action="/secure/secure-users" method="GET">
+  <input type="text" name="search" id="search" placeholder="Search by Name, Interests, or Email" value="<%= search %>">
+  <button type="submit">Search</button>
+</form>
+
+
+<div>
+  <p class="success-msg"><%= message %></p>
+  <ul class="user-list">
+    <% for (let i = 0; i < users.length; i++ ) { %>
+        <li class="user-list-item">
+          <a href="/secure/<%= users[i].username %>">
+            <img class="list-img"src="<%= users[i].picturePath%>" alt=""/>
+            <p>
+              <% if(users[i].id == currentUser.id) { %>
+                <%= users[i].firstName %> <%= users[i].lastName %>
+                <p>[you]</p>
+              <% } else { %>
+                <%= users[i].firstName %> <%= users[i].lastName %>
+                <p>&nbsp;</p>
+              <% } %>
+            </p>
+          </a>
+        </li>
+    <% } %>
+  </ul>
+</div>

@@ -1,0 +1,23 @@
+<form action="/user/login" method="POST">   
+    <table class="login-table">
+        <tbody class="login-body">
+            <tr class="username-input">
+                <td>User Name</td>
+                <td><input name="username" type="text" placeholder="enter username" value="<%= user.username ? user.username : '' %>"></td>
+            </tr>  
+            <tr class="password-input">
+                <td>Password</td>
+                <td><input name="password" placeholder="enter password" type="password"></td>
+            </tr> 
+            <tr class="login-button">
+                <td><input type="submit" value="Log in"></td>
+            </tr>
+            <tr class="error-message">
+                <td>
+                    <p><%= errorMessage ? errorMessage : " " %></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+
