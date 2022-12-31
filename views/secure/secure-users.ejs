@@ -17,7 +17,7 @@
     <% for (let i = 0; i < users.length; i++ ) { %>
         <li class="user-list-item">
           <a href="/secure/<%= users[i].username %>">
-            <img class="list-img"src="<%= users[i].picturePath%>" alt=""/>
+            <img class="list-img"src="<%= users[i].picturePath%>" alt="profile pic of <%= users[i].firstName%> <%= users[i].lastName%>"/>
             <p>
               <% if(users[i].id == currentUser.id) { %>
                 <%= users[i].firstName %> <%= users[i].lastName %>

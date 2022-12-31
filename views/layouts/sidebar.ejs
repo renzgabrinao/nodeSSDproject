@@ -20,8 +20,6 @@
                 <ul class="sidebar-users">
                     <span class="sidebar-title">other students:</span>
                     <% for (let i = 0; i < usersList.length; i++) { %>
-                        <%console.log("SIDEBAR")%>
-                        <%console.log(usersList[i], currentUser )%>
                         <% if (usersList[i].id != currentUser.id) { %>
                             <li>
                                 <a href="/secure/<%= usersList[i].username %>">

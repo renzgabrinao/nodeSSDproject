@@ -1,3 +1,4 @@
+<%= console.log(user) %>
 <form class="edit-form" action="/secure/edit<%= userId ? "/"+userId : "" %>" method="POST" enctype="multipart/form-data">
     <input type="hidden" id="userId" name="userId" value="<%= user.userId %>">
     <input id="profilePicturePath" name="profilePicturePath" type="hidden" value="<%= user.picturePath %>">
@@ -31,12 +32,13 @@
                 <td><label for="picture">Profile Image</label ></td>
                 <td><input type="file" name="picture" id="image" /></td>
             </tr>
-            <% if (user.role == "manager" || user.role == "admin") { %>
+            <% if (currentUser.role == "manager" || currentUser.role == "admin") { %>
                 <tr class="role-input">
                     <td><label for="role"></label></td>
                     <td>
                         <select name="role" id="roles">
-                            <% if (user.role == "admin") { %>
+                            <option value="<%= user.role %>" selected="selected">- Select Role -</option>
+                            <% if (currentUser.role == "admin") { %>
                                 <option value="admin">Admin</option>
                             <% } %>
                             <option value="manager">Manager</option>
@@ -45,9 +47,14 @@
                     </td>
                 </tr>
             <% } %> 
+            <tr class="submit-button">
+                <td>
+                    <button type="submit" value="Submit">Submit</button>
+                </td>
+            </tr>
         </tbody>
     </table>
-    <button type="submit" value="Submit">Submit</button>
+
 
 </form>
 <%= errorMessage %>

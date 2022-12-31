@@ -83,14 +83,17 @@ exports.UserDetail = async function (req, res) {
 // handle edit get request
 exports.Edit = async function (req, res) {
     console.log("inside edit get", req.params.id)
+    const reqInfo = RequestService.reqHelper(req)
     const userId = req.params.id
+    const currentUser = await _userOps.getUserById(reqInfo.id)
     let userObj = await _userOps.getUserById(userId)
 
     res.render("../views/secure/secure-edit-form.ejs", {
-        reqInfo: RequestService.reqHelper(req),
+        reqInfo: reqInfo,
         errorMessage: "",
         userId: userId,
-        user: userObj
+        user: userObj,
+        currentUser: currentUser
     })
 }
 

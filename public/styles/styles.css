@@ -336,11 +336,11 @@ footer {
     text-align: center;
     border: none;
     border-radius: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 
 .login-button input, .login-button td,
-.error-message p, .error-message td {
+.error-message p, .error-message td, .submit-button button {
     width: 100%;
     height: 30px;
     text-align: center;
@@ -361,4 +361,7 @@ footer {
     text-align: center;
     font-size: 2em;
 }
+
+.submit-button td { width: 250px; }
+.submit-button { display: flex; justify-content: center; margin-bottom: 20px; }
 
